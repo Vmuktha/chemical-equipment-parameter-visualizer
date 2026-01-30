@@ -34,7 +34,7 @@ function Register({ setMode }) {
   try {
 
     await axios.post(
-      "${https://chem-analyzer-backend.onrender.com}/register/",
+      `${BASE_URL}/register/`,
       {
         username,
         email,

@@ -28,7 +28,7 @@ function Login({ setAuth }) {
     try {
 
       const res = await axios.post(
-        "${https://chem-analyzer-backend.onrender.com}/api/token/",
+        `${BASE_URL}/api/token/`,
         {
           username,
           password

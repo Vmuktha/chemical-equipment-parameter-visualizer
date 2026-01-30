@@ -75,7 +75,7 @@ function Dashboard() {
     try {
 
       const res = await axios.get(
-        "${https://chem-analyzer-backend.onrender.com}/api/history/"
+        `${BASE_URL}/api/history/`
       );
 
       setHistory(res.data);
@@ -136,7 +136,7 @@ function Dashboard() {
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        "${https://chem-analyzer-backend.onrender.com}/api/report/",
+        `${BASE_URL}/api/report/`,
         {
           headers: {
             Authorization: `Bearer ${token}`
