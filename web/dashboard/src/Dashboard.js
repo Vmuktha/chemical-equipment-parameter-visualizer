@@ -75,7 +75,7 @@ function Dashboard() {
     try {
 
       const res = await axios.get(
-        `${BASE_URL}/api/history/`
+        `${BASE_URL}/history/`
       );
 
       setHistory(res.data);
@@ -110,7 +110,7 @@ function Dashboard() {
 
       const res = await axios.post(
 
-        "/api/upload/",
+        "/upload/",
         formData
       );
 
@@ -136,7 +136,7 @@ function Dashboard() {
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        `${BASE_URL}/api/report/`,
+        `${BASE_URL}/report/`,
         {
           headers: {
             Authorization: `Bearer ${token}`
