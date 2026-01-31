@@ -75,7 +75,11 @@ function Dashboard() {
     try {
 
       const res = await axios.get(
-        `${BASE_URL}/history/`
+        `${BASE_URL}/history/` , {
+          headers: {
+            Authorization: `Bearer ${token}`
+          },
+        }
       );
 
       setHistory(res.data);
@@ -109,9 +113,12 @@ function Dashboard() {
       formData.append("file", file);
 
       const res = await axios.post(
-
-        "/upload/",
-        formData
+        `${BASE_URL}/upload/`,
+        formData, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          },
+        }
       );
 
       if (res.data.rows) {
