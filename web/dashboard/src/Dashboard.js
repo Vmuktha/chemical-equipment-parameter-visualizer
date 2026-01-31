@@ -71,67 +71,59 @@ function Dashboard() {
   // Fetch History
   // ----------------------------
   const fetchHistory = async () => {
+  try {
+    const token = localStorage.getItem("token");
 
-    try {
-
-      const res = await axios.get(
-        `${BASE_URL}/history/` , {
-          headers: {
-            Authorization: `Bearer ${token}`
-          },
-        }
-      );
-
-      setHistory(res.data);
-
-      if (res.data.length > 0) {
-        setLatest(res.data[0]);
-
-        if (res.data[0].rows) {
-               setRows(res.data[0].rows);
-        }
+    const res = await axios.get(
+      `${BASE_URL}/history/`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       }
+    );
 
-    } catch (err) {
-      console.log(err);
+    setHistory(res.data);
+
+    if (res.data.length > 0) {
+      setLatest(res.data[0]);
+      setRows(res.data[0].rows || []);
     }
-  };
+
+  } catch (err) {
+    console.log(err);
+  }
+};
 
   // ----------------------------
   // Upload CSV
   // ----------------------------
   const uploadFile = async () => {
 
-    if (!file) {
-      alert("Select a file first");
-      return;
-    }
+  if (!file) return;
 
-    try {
+  const token = localStorage.getItem("token");
 
-      const formData = new FormData();
-      formData.append("file", file);
+  const formData = new FormData();
+  formData.append("file", file);
 
-      const res = await axios.post(
-        `${BASE_URL}/upload/`,
-        formData, {
-          headers: {
-            Authorization: `Bearer ${token}`
-          },
-        }
-      );
-
-      if (res.data.rows) {
-           setRows(res.data.rows);
+  try {
+    await axios.post(
+      `${BASE_URL}/upload/`,
+      formData,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       }
+    );
 
+    fetchHistory();
 
-      fetchHistory();
-
-    } catch {
-      alert("Upload failed");
-    }
-  };
+  } catch {
+    alert("Upload failed");
+  }
+};
 
   // ----------------------------
   // Download PDF Report
