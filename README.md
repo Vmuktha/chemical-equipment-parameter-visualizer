@@ -26,7 +26,7 @@ Developed as part of the IIT Bombay / FOSSEE Internship Screening Task.
 - Analytics Dashboard
 - Interactive Charts
 - PDF Report Download
-- User-Friendly Interface
+- User Friendly Interface
 
 ### ✦ Backend (Django + DRF)
 - RESTful APIs
@@ -53,20 +53,6 @@ Developed as part of the IIT Bombay / FOSSEE Internship Screening Task.
 
 ---
 
-## ✦ Project Structure
-
-hybrid-equipment-visualizer/
-│
-├── backend/ # Django Backend
-├── web/ # React Frontend
-├── desktop/ # PyQt Desktop App
-├── requirements.txt
-|── sample_data
-└── README.md
-
-
----
-
 ## ⚙️ Backend Setup
 
 ```bash
@@ -75,6 +61,7 @@ python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 
+cd server
 python manage.py migrate
 python manage.py runserver
 ```
@@ -102,6 +89,13 @@ python app.py
 ```
 ---
 
+# Environment Configuration
+For local development,the frontend communicates with the backend using:
+
+REACT_APP_API_URL=http://127.0.0.1:8000/api
+
+---
+
 ## ✦ Authentication Flow
 ◆ Users can register through the Web UI
 ◆ JWT tokens are used for secure authentication
@@ -118,11 +112,39 @@ The system generates automated PDF reports containing:
 # Sample Data
 sample_data/sample_equipment_data.csv
 
+Required columns:
+➢Equipment Name
+➣Type
+➣Flowrate
+➣Pressure
+➣Temperature
+
+
+
 ---
 
 ## ✦ Deployment
 
-Live demo
+Live demo links 
+
+Frontend(Wen Application):
+https://hybrid-equipment-visualizer.vercel.app
+
+Backend(API):
+https://chem-analyzer-backend.onrender.com
+
+Demo Video:
+https://drive.google.com/file/d/1oWTU-b726Nscd4S8qnwL9kLBYhjtpYt-/view?usp=drive_link
+
+---
+
+# Future Enhancements
+- Role based user access
+- Advanced analytics modules
+- Cloud database integration
+- Export to multiple formats
+- Performance optimization
+- AI-based anomaly detection
 
 
 

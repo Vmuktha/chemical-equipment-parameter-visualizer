@@ -75,7 +75,7 @@ function Dashboard() {
     const token = localStorage.getItem("token");
 
     const res = await axios.get(
-      `${BASE_URL}/history/`,
+      "http://127.0.0.1:8000/api/history/",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -109,7 +109,7 @@ function Dashboard() {
 
   try {
     await axios.post(
-      `${BASE_URL}/upload/`,
+      "http://127.0.0.1:8000/api/upload/",
       formData,
       {
         headers: {
